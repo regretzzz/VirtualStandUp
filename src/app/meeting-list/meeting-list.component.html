@@ -1,1 +1,71 @@
-<p>meeting-list works!</p>
+<div class="list-container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="row">
+        <div class="col-md-4">
+            <img class="logo" src="https://via.placeholder.com/200" alt="" style="object-fit:scale-down;">
+        </div>
+        <div class="col-md-8 justify-content-center align-items-center">
+          <h2>{{ Team.teamName }}</h2>
+          <h3>{{ Team.teamDesc }}</h3>
+          <h5>Stand Up starts at : {{Team.standupTime}}</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+
+      <div class="table-wrapper-scroll-y my-custom-scrollbar">
+
+        <table class="table table-bordered table-striped mb-0">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let userItem  of ListUsers; let i=index">
+              <th scope="row">{{i}}</th>
+              <td>{{userItem.user.name}}</td>
+              <td>{{userItem.user.email}}</td>
+              <td>{{userItem.member_role}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive-sm">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Meeting Name</th>
+              <th scope="col">Meeting Start</th>
+              <th scope="col">Meeting End</th>
+              <th scope="col">Meeting Status</th>
+              <th scope="col">Updates</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr #rowElem *ngFor="let meetingItem  of Meetings; let i=index" (click)="selectTable($event,rowElem)">
+                <th scope="row">{{i}}</th>
+                <td>{{meetingItem.meetingSubject}}</td>
+                <td>{{meetingItem.startDate | date:'medium'}}</td>
+                <td>{{meetingItem.endDate | date:'medium'}}</td>
+                <td>{{meetingItem.status}}</td>
+                <td>{{meetingItem.standUps.length}}/{{ListUsers.length}}</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+</div>

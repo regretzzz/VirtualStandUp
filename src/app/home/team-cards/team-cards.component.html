@@ -1,10 +1,10 @@
-<a routerLink="" class="card-container" (click)= "checkTeam($event)">
+<a routerLink="" class="card-container" (click)="checkTeam($event)">
     <div class="card" style="width: 20rem;">
-        <img src="{{ TeamCard.imagepath }}" class="card-img-top" alt="...">
+        <img src="{{ teamCard.teamImage }}" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">{{ TeamCard.teamname }}</h5>
-            <p class="card-text">{{ TeamCard.teamdesc }}</p>
-        
+            <h5 class="card-title">{{ teamCard.teamName }}</h5>
+            <p class="card-text">{{ teamCard.teamDesc }}</p>
+
         </div>
     </div>
 </a>

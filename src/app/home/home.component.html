@@ -1,11 +1,10 @@
 <div class="card-teams">
-    <div class="row" >
-        <div class="col-md-6 team-columns" *ngFor="let teamEven  of TeamList">
-          
-              <app-team-cards  
-            [TeamCard] ="teamEven" ></app-team-cards>
-        
-        </div>
-       
+  <div class="row">
+    <div class="col-md-6 team-columns" *ngFor="let teamItem  of TeamList">
+    
+      <app-team-cards [teamCard]="teamItem"></app-team-cards>
+
     </div>
+
   </div>
+</div>

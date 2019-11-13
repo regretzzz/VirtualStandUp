@@ -1,0 +1,41 @@
+<button [disabled]="disabled" appFloatAddButton class="right-corder-container-button" (click)="openModal(template)">
+    <span class="short-text">+</span>
+    <span class="long-text">Add Updates</span>
+</button>
+
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Modal</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form #f="ngForm" (ngSubmit)="confirm(f)">
+        <div class="modal-body text-center">
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">What I did yesterday?</label>
+                <textarea  name="yesterday" class="form-control" id="yesterdayUpdate" cols="30" rows="2"
+                    style="resize: none;" ngModel></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">What I will do now?</label>
+                <textarea  name="today" class="form-control" id="todayUpdate" cols="30" rows="2"
+                    style="resize: none;" ngModel></textarea>
+
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Do you have any blockers?</label>
+                <textarea  name="blockers" class="form-control" id="blockerUpdate" cols="30" rows="2"
+                    style="resize: none;" ngModel></textarea>
+
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" (click)="decline()">No</button>
+            <button type="submit" class="btn btn-primary">Yes</button>
+        </div>
+    </form>
+</ng-template>

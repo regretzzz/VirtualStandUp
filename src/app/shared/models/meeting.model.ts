@@ -1,8 +1,11 @@
-export class Meeting {
-    constructor(public id: number,
-                public meetingsubj: string,
-                public meetingdesc: string,
-                public meetingstat: string,
-                public meetingstartdate: string,
-                public meetingenddate: string){}
+import { StandUp } from './standup.model';
+
+export interface Meeting {
+    id: number;
+    meetingsubj: string;
+    meetingdesc: string;
+    meetingstat: string;
+    meetingstartdate: Date;
+    meetingenddate: Date;
+    standups: Set<StandUp>;
 }

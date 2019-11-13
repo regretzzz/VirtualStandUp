@@ -1,5 +1,7 @@
-import { Team } from './team.model'
-import { User } from './user.model';
-export class TeamMember{
-    constructor(public id: number, public team: Team, public user: User, public role: string){}
+import { StandUp } from './standup.model';
+export interface TeamMember{
+    id: string;
+    role: string;
+    comments: Set<StandUp>;
+    
 }

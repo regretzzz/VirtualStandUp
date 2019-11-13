@@ -1,1 +1,24 @@
-<p>login works!</p>
+<div class="login-container d-flex text-center justify-content-center align-items-center h-100" >
+
+    <div class="form-container login-form" >
+        <form class="needs-validation" (ngSubmit) ="SubmitLogin()" novalidate #f="ngForm">
+            <div class="form-group">
+                <label for="validationCustom01" class="float-left">Username</label>
+                <input type="text" class="form-control" id="validationCustom01" placeholder="Enter Username" ngModel name="username" required>
+            
+            </div>
+            <div class="form-group ">
+                <label for="exampleInputPassword1" class="float-left">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" ngModel name="password" placeholder="Password">
+            </div>
+            <!-- <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div> -->
+            <button  type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+        </form>
+          
+    </div>
+    
+      
+</div>

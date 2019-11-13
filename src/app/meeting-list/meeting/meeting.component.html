@@ -1,1 +1,39 @@
-<p>meeting works!</p>
+<ng-container *ngIf="StandUpList">
+    <div class="row">
+        <div class="col-md-12 pl-5 mt-2">
+            <h3>{{StandUpList.meetingSubject}}</h3>
+            <h5>{{StandUpList.meetingDescription}}</h5>
+        </div>
+    </div>
+    <div class="row mr-1 ml-1 h-50 mt-5">
+
+        <div class="col-md-3" *ngFor="let standUp of StandUpList.cards">
+            <div appRandomColorCard class="card text-white mb-3" style="max-width: 18rem;">
+                <div class="card-header">{{ standUp.user.name }}</div>
+                <div class="card-body">
+                    <h5 class="card-title">Yesterday</h5>
+                    <p class="card-text">{{ standUp.standUp.yesterday }}</p>
+                    <h5 class="card-title">Today</h5>
+                    <p class="card-text">{{ standUp.standUp.today}}</p>
+                    <h5 class="card-title">Blockers</h5>
+                    <p class="card-text">{{ standUp.standUp.blockers }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex text-center justify-content-center align-items-center w-100" *ngIf="!ShowCards">
+            <h1>
+                No Updates
+            </h1>
+        </div>
+    </div>
+</ng-container>
+
+
+<div class="right-corder-container">
+    <app-add-update-form [disabled]="IsDone">
+
+
+
+    </app-add-update-form>
+</div>

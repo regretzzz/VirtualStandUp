@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,9 +10,12 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
   }
-
+  Logout(){
+    
+    this.authenticationService.Logout();
+  }
 }
