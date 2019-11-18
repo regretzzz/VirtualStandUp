@@ -13,8 +13,8 @@ export class CollapseComponent implements OnInit {
   ngOnInit() {
   }
 
-  Logout(){
-    
+  Logout() {
+
     this.authenticationService.Logout();
   }
 }

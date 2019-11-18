@@ -6,33 +6,33 @@ import { Router, ActivatedRoute } from '@angular/router';
   providedIn: 'root'
 })
 export class TeamService {
+  public ListOfMembers: any;
 
- 
-  public ListOfMembers:Object;
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
-  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) {
-   
-   }
-
-
-  ViewTeam(teamId: string, userID: string){
-    let url  = `http://localhost:8080/team/member/${teamId}/${userID}`;
-    this.http.get(url).subscribe(
-      responseData=> {
-        this.ListOfMembers = responseData;
-          console.log(responseData);
-          this.router.navigate(['meetings'],{queryParams:{teamID: teamId, memberID:responseData[0].memberID}});
-        return responseData;
+  ViewTeam(teamId: string, userID: string) {
+    const url = `http://localhost:8080/team/member/${teamId}/${userID}`;
+    this.http.get(url).subscribe(responseData => {
+      this.ListOfMembers = responseData;
+      console.log(responseData);
+      this.router.navigate(['meetings'], {
+        queryParams: { teamID: teamId, memberID: responseData[0].memberID }
       });
+      return responseData;
+    });
   }
 
-  GetMembers(teamId: string){
-    let url  = `http://localhost:8080/team/member/${teamId}`;
+  GetMembers(teamId: string) {
+    const url = `http://localhost:8080/team/member/${teamId}`;
     return this.http.get(url);
   }
 
-  GetMeetings(teamId: string){
-    let url  = `http://localhost:8080/team/meetings/${teamId}`;
+  GetMeetings(teamId: string) {
+    const url = `http://localhost:8080/team/meetings/${teamId}`;
     return this.http.get(url);
   }
 }

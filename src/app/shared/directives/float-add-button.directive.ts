@@ -5,7 +5,7 @@ import { Directive, HostListener, ElementRef, Renderer2 } from '@angular/core';
 })
 export class FloatAddButtonDirective {
 
-  constructor(public el: ElementRef,private renderer: Renderer2) { }
+  constructor(public el: ElementRef, private renderer: Renderer2) { }
 
   @HostListener('mouseenter') onMouseEnter() {
       this.renderer.addClass(this.el.nativeElement.children[1], 'show-long-text');

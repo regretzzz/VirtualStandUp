@@ -1,8 +1,7 @@
-export class StandUp{
-
-    yesterday: string;
-    today: string;
-    blockers: string;
-    meeting_id: string;
-    member_id: string;
+export class StandUp {
+  yesterday: string;
+  today: string;
+  blockers: string;
+  meetingID: string;
+  memberID: string;
 }

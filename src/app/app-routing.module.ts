@@ -9,14 +9,14 @@ import { MeetingComponent } from './meeting-list/meeting/meeting.component';
 
 import { AuthguardService } from './services/authguard.service';
 
-const appRoutes: Routes =[
-    {path: '', component:  HomeComponent,canActivate:[AuthguardService ] },
+const appRoutes: Routes = [
+    {path: '', component:  HomeComponent, canActivate: [AuthguardService]},
     {path: 'login', component:  LoginComponent },
-    {path: 'home', component:  HomeComponent ,canActivate:[AuthguardService ]},
-    { path: 'meetings', component: MeetingListComponent ,canActivate:[AuthguardService ]},
-    {path: 'meetings/meeting', component: MeetingComponent, canActivate:[AuthguardService ]},
-    {path: '**',redirectTo:''}
-    
+    {path: 'home', component:  HomeComponent , canActivate: [AuthguardService ]},
+    { path: 'meetings', component: MeetingListComponent , canActivate: [AuthguardService ]},
+    {path: 'meetings/meeting', component: MeetingComponent, canActivate: [AuthguardService ]},
+    {path: '**', redirectTo: ''}
+
 ];
 
 

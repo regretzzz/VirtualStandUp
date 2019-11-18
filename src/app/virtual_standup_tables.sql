@@ -13,7 +13,7 @@ CREATE TABLE team(
 
 
 CREATE TABLE meeting(
-   meeting_id uuid NOT NULL PRIMARY KEY,
+   meetingID uuid NOT NULL PRIMARY KEY,
    team_id uuid NOT NULL REFERENCES team (team_id),
    meeting_subj CHARACTER VARYING NOT NULL,
    meeting_desc CHARACTER VARYING NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE users(
 
 CREATE TABLE standup(
    standup_id uuid NOT NULL PRIMARY KEY,
-   meeting_id uuid NOT NULL REFERENCES meeting (meeting_id),
+   meetingID uuid NOT NULL REFERENCES meeting (meetingID),
    users_id uuid NOT NULL REFERENCES users (users_id),
    yesterday CHARACTER VARYING NOT NULL,
    today CHARACTER VARYING NOT NULL,
@@ -108,80 +108,80 @@ UPDATE public.team_members
 
 
 INSERT INTO public.meeting(
-	meeting_id, team_id, meeting_subj, meeting_desc, meeting_status, meeting_start_date, meeting_end_date)
+	meetingID, team_id, meeting_subj, meeting_desc, meeting_status, meeting_start_date, meeting_end_date)
 	VALUES (uuid_generate_v4(), (SELECT team_id from public.team WHERE team_name='AAA'), 'Daily Stand-up', '2/28/2020 Meeting', 'ON_GOING', current_timestamp, current_timestamp + (360 * interval '1 minute'));
 
 
 INSERT INTO public.meeting(
-	meeting_id, team_id, meeting_subj, meeting_desc, meeting_status, meeting_start_date, meeting_end_date)
+	meetingID, team_id, meeting_subj, meeting_desc, meeting_status, meeting_start_date, meeting_end_date)
 	VALUES (uuid_generate_v4(), (SELECT team_id from public.team WHERE team_name='AAA'), 'Daily Stand-up', '2/27/2020 Meeting', 'DONE', current_timestamp, current_timestamp + (360 * interval '1 minute'));
 
 INSERT INTO public.meeting(
-	meeting_id, team_id, meeting_subj, meeting_desc, meeting_status, meeting_start_date, meeting_end_date)
+	meetingID, team_id, meeting_subj, meeting_desc, meeting_status, meeting_start_date, meeting_end_date)
 	VALUES (uuid_generate_v4(), (SELECT team_id from public.team WHERE team_name='AAA'), 'Daily Stand-up', '2/29/2020 Meeting', 'INCOMING', current_timestamp, current_timestamp + (360 * interval '1 minute'));
 
 INSERT INTO public.meeting(
-	meeting_id, team_id, meeting_subj, meeting_desc, meeting_status, meeting_start_date, meeting_end_date)
+	meetingID, team_id, meeting_subj, meeting_desc, meeting_status, meeting_start_date, meeting_end_date)
 	VALUES (uuid_generate_v4(), (SELECT team_id from public.team WHERE team_name='IRMV2'), 'Daily Stand-up', '9/30/2019 ', 'DONE', current_timestamp -  (360 * interval '1 minute'), current_timestamp);
 
 INSERT INTO public.meeting(
-	meeting_id, team_id, meeting_subj, meeting_desc, meeting_status, meeting_start_date, meeting_end_date)
+	meetingID, team_id, meeting_subj, meeting_desc, meeting_status, meeting_start_date, meeting_end_date)
 	VALUES (uuid_generate_v4(), (SELECT team_id from public.team WHERE team_name='IRMV2'), 'Daily Stand-up', '10/5/2019', 'INCOMING', current_timestamp, current_timestamp + (360 * interval '1 minute'));
 
 INSERT INTO public.meeting(
-	meeting_id, team_id, meeting_subj, meeting_desc, meeting_status, meeting_start_date, meeting_end_date)
+	meetingID, team_id, meeting_subj, meeting_desc, meeting_status, meeting_start_date, meeting_end_date)
 	VALUES (uuid_generate_v4(), (SELECT team_id from public.team WHERE team_name='IRMV2'), 'Daily Stand-up', '9/31/2019', 'ON_GOING', current_timestamp, current_timestamp + (60 * interval '1 minute'));
 
 
 UPDATE public.meeting
 	SET meeting_status= 'ON_GOING'
-	WHERE meeting_id= '7d98f1a8-f263-4ccb-8c66-972812ae925e' ;
+	WHERE meetingID= '7d98f1a8-f263-4ccb-8c66-972812ae925e' ;
 
 UPDATE public.meeting
 	SET meeting_status= 'DONE'
-	WHERE meeting_id= 'c508a848-3cf9-4abe-a28b-42a37dec8f5a' ;
+	WHERE meetingID= 'c508a848-3cf9-4abe-a28b-42a37dec8f5a' ;
 
 UPDATE public.meeting
 	SET meeting_status= 'INCOMING'
-	WHERE meeting_id= '315e59b4-2ee1-4544-9c5a-85f958d5d5f3';
+	WHERE meetingID= '315e59b4-2ee1-4544-9c5a-85f958d5d5f3';
 
 UPDATE public.meeting
 	SET meeting_status= 'DONE'
-	WHERE meeting_id= 'ece366fd-c617-4ce1-84f7-743cb15c6d7c' ;
+	WHERE meetingID= 'ece366fd-c617-4ce1-84f7-743cb15c6d7c' ;
 
 UPDATE public.meeting
 	SET meeting_status= 'INCOMING'
-	WHERE meeting_id= '1649d81a-c652-4da9-8270-24f814f5eae1' ;
+	WHERE meetingID= '1649d81a-c652-4da9-8270-24f814f5eae1' ;
 
 UPDATE public.meeting
 	SET meeting_status= 'ON_GOING'
-	WHERE meeting_id= 'ebb51c69-fb6d-49b3-bc2b-e6b545dee201' ;
+	WHERE meetingID= 'ebb51c69-fb6d-49b3-bc2b-e6b545dee201' ;
 
 
 
 
 INSERT INTO public.standup(
-	standup_id, meeting_id, users_id, yesterday, today, blockers)
+	standup_id, meetingID, users_id, yesterday, today, blockers)
 	VALUES (uuid_generate_v4(), 
-   (SELECT meeting_id from public.meeting WHERE team_id=(SELECT team_id from public.team WHERE team_name= 'IRMV2') AND meeting_status='DONE'),
+   (SELECT meetingID from public.meeting WHERE team_id=(SELECT team_id from public.team WHERE team_name= 'IRMV2') AND meeting_status='DONE'),
    (SELECT users_id from public.users WHERE email='j.lee@trustarc.com'),'yesterday taskss', 'todays taskss', 'myblockers');
 
 INSERT INTO public.standup(
-	standup_id, meeting_id, users_id, yesterday, today, blockers)
+	standup_id, meetingID, users_id, yesterday, today, blockers)
 	VALUES (uuid_generate_v4(), 
-   (SELECT meeting_id from public.meeting WHERE team_id=(SELECT team_id from public.team WHERE team_name= 'IRMV2') AND meeting_status='DONE'),
+   (SELECT meetingID from public.meeting WHERE team_id=(SELECT team_id from public.team WHERE team_name= 'IRMV2') AND meeting_status='DONE'),
    (SELECT users_id from public.users WHERE email='some.person@trustarc.com'),'yesterday taskss', 'todayy taskss', 'my blockers');
 
 INSERT INTO public.standup(
-	standup_id, meeting_id, users_id, yesterday, today, blockers)
+	standup_id, meetingID, users_id, yesterday, today, blockers)
 	VALUES (uuid_generate_v4(), 
-   (SELECT meeting_id from public.meeting WHERE team_id=(SELECT team_id from public.team WHERE team_name= 'AAA') AND meeting_status='DONE'),
+   (SELECT meetingID from public.meeting WHERE team_id=(SELECT team_id from public.team WHERE team_name= 'AAA') AND meeting_status='DONE'),
    (SELECT users_id from public.users WHERE email='user.person@trustarc.com'),'yesterday taskss', 'today taskss', 'mys blockers');
 
 INSERT INTO public.standup(
-	standup_id, meeting_id, users_id, yesterday, today, blockers)
+	standup_id, meetingID, users_id, yesterday, today, blockers)
 	VALUES (uuid_generate_v4(), 
-   (SELECT meeting_id from public.meeting WHERE team_id=(SELECT team_id from public.team WHERE team_name= 'AAA') AND meeting_status='DONE'),
+   (SELECT meetingID from public.meeting WHERE team_id=(SELECT team_id from public.team WHERE team_name= 'AAA') AND meeting_status='DONE'),
    (SELECT users_id from public.users WHERE email='j.lee@trustarc.com'),'yesterday e', 'today taskssw', 'my  sblockers');
 
 

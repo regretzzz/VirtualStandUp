@@ -29,9 +29,9 @@
     </div>
 </ng-container>
 
-
+<!-- <button class="btn btn-success" (click)= "sendRequest()">Click me to send</button> -->
 <div class="right-corder-container">
-    <app-add-update-form [disabled]="IsDone">
+    <app-add-update-form [disabled]="IsDone" [stompClient] = "stompClient" (handleMessage)="handleResult($event)">
 
 
 

@@ -10,32 +10,41 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.sass']
 })
 export class LoginComponent implements OnInit {
-  @ViewChild('f',{static: false}) loginForm: NgForm;
+  @ViewChild('f', { static: false }) loginForm: NgForm;
 
-  constructor(private http: HttpClient, private auth: AuthenticationService, private router: Router) { }
+  constructor(
+    private http: HttpClient,
+    private auth: AuthenticationService,
+    private router: Router
+  ) {}
 
-  
   ngOnInit() {
-    if(localStorage.length  > 0 ){
-        this.router.navigate(['']);
+    if (localStorage.length > 0) {
+      this.router.navigate(['']);
     }
-    let forms = document.getElementsByClassName('needs-validation');
+    const forms = document.getElementsByClassName('needs-validation');
     // Loop over them and prevent submission
-    let validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
+    const validation = Array.prototype.filter.call(forms, form => {
+      form.addEventListener(
+        'submit',
+        event => {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        },
+        false
+      );
     });
   }
 
   SubmitLogin() {
     console.log(this.loginForm);
-    let user = this.auth.Login(this.loginForm.controls.username.value, 
-      this.loginForm.controls.password.value);
+    const user = this.auth.Login(
+      this.loginForm.controls.username.value,
+      this.loginForm.controls.password.value
+    );
     // let loginData = {};
     // loginData['username'] = this.loginForm.controls.username.value;
     // loginData['password'] = this.loginForm.controls.password.value;
@@ -45,5 +54,4 @@ export class LoginComponent implements OnInit {
     //     console.log(responseData);
     //   });
   }
-
 }

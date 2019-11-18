@@ -6,12 +6,12 @@ import { Team } from '../shared/models/team.model';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.sass']
 })
-export class HomeComponent implements OnInit{
-  TeamList :Team[] ;
-  
-  constructor() { 
-    
-   
+export class HomeComponent implements OnInit {
+  TeamList: Team[] ;
+
+  constructor() {
+
+
   }
 
   ngOnInit() {

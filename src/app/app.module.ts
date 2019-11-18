@@ -32,7 +32,7 @@ import { AddUpdateFormComponent } from './meeting-list/meeting/add-update-form/a
     HeaderComponent,
     MeetingListComponent,
     MeetingComponent,
-  
+
     FooterComponent,
     ProfileComponent,
     CollapseComponent,

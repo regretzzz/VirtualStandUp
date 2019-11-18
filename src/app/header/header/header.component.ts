@@ -7,13 +7,13 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./header.component.sass']
 })
 export class HeaderComponent implements OnInit {
-  
+
   constructor(private authenticationService: AuthenticationService) {
-    console.log("activated");
+    console.log('activated');
    }
 
   ngOnInit() {
-    
+
   }
 
 }

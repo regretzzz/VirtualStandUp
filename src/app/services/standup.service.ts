@@ -12,10 +12,10 @@ export class StandupService {
 
 
   public AddUpdate(standUp: StandUp) {
-    console.log("service"+ standUp);
-    let url = `http://localhost:8080/standup/`;
-    let headers = new HttpHeaders();
-    headers.append('Content-Type','application/json');
-    return this.http.post(url,standUp,{ headers: headers});
+    console.log('service' + standUp);
+    const url = `http://localhost:8080/standup/`;
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(url, standUp, { headers});
   }
 }

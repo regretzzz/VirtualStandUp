@@ -14,9 +14,9 @@ export class RandomColorCardDirective {
     'bg-info'
   ];
 
-  constructor(private el: ElementRef, private renderer: Renderer2) { 
-    let index = Math.floor(Math.random() * 5);
-    renderer.addClass(el.nativeElement,this.randomColorClass[index]);
+  constructor(private el: ElementRef, private renderer: Renderer2) {
+    const index = Math.floor(Math.random() * 5);
+    renderer.addClass(el.nativeElement, this.randomColorClass[index]);
   }
 
 }
